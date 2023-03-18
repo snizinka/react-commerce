@@ -1,14 +1,21 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
+import { useLoaderData } from "react-router-dom";
 import Banner from "../components/Banner";
 import Products from "../components/Products";
 
-const name = () => {
+const Home = () => {
+    const [products, setProducts] = useState();
+    const data = useLoaderData();
+
+    useEffect(() => {
+        setProducts(data.data);
+    }, [data])
   return (
     <div>
       <Banner></Banner>
-      <Products></Products>
+      <Products products={products}></Products>
     </div>
   )
 };
 
-export default name;
+export default Home;
