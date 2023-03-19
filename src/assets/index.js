@@ -6,5 +6,7 @@ import slidet from './slidet.jpg'
 import slideth from './slideth.jpg'
 import payment from './payment.png'
 import cartheader from './cartheader.jpg'
+import googlelogo from './google.png'
+import githublogo from './github.png'
 
-export { logo, bag, user, slideo, slidet, slideth, payment, cartheader };
+export { logo, bag, user, slideo, slidet, slideth, payment, cartheader, googlelogo, githublogo };

@@ -43,10 +43,17 @@ export const oskansSlice = createSlice({
             } else {
                 item.quantity -= 1;
             }
+        },
+
+        addUser: (state, action) => {
+            state.userInfo = action.payload;
+        },
+        removeUser: (state, action) => {
+            state.userInfo = null;
         }
     }
 })
 
-export const { addToCart, deleteItem, resetCart, incrementQuantity, decrementQuantity } = oskansSlice.actions;
+export const { addToCart, deleteItem, resetCart, incrementQuantity, decrementQuantity, addUser, removeUser } = oskansSlice.actions;
 
 export default oskansSlice.reducer;
