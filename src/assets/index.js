@@ -5,5 +5,6 @@ import slideo from './slideo.jpg'
 import slidet from './slidet.jpg'
 import slideth from './slideth.jpg'
 import payment from './payment.png'
+import cartheader from './cartheader.jpg'
 
-export { logo, bag, user, slideo, slidet, slideth, payment };
+export { logo, bag, user, slideo, slidet, slideth, payment, cartheader };
