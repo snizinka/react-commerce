@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { MdOutlineStar } from 'react-icons/md';
 import { useDispatch } from 'react-redux';
 import { useLocation } from 'react-router-dom'
+import { toast, ToastContainer } from 'react-toastify';
 import { addToCart } from '../redux/oskansSlice';
 
 function Product() {
@@ -70,7 +71,7 @@ function Product() {
                                 quantity: baseQty,
                                 description: details.description
 
-                            }))}
+                            })) & toast.success(`${details.title} is added`)}
                             className='bg-black text-white py-3 px-6 active:bg-gray-800'>
                             add to cart
                         </button>
@@ -78,6 +79,18 @@ function Product() {
                     <p className='text-base text-gray-500'>Category: <span className='font-medium capitalize'>{details.category}</span></p>
                 </div>
             </div>
+            <ToastContainer
+                position="top-left"
+                autoClose={400}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="dark">
+            </ToastContainer>
         </div>
     )
 }

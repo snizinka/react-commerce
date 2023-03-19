@@ -2,6 +2,7 @@ import React from 'react'
 import { BsArrowRight } from 'react-icons/bs'
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { toast, ToastContainer } from 'react-toastify';
 import { addToCart } from '../redux/oskansSlice';
 
 function ProductsCard({ product }) {
@@ -49,7 +50,7 @@ function ProductsCard({ product }) {
                             quantity: 1,
                             description: product.description
 
-                        }))} className='absolute z-20 w-[100px] text-gray-500 hover:text-gray-900 flex 
+                        })) & toast.success(`${product.title} is added`)} className='absolute z-20 w-[100px] text-gray-500 hover:text-gray-900 flex 
                         items-center gap-1 top-0 transform -translate-x-32 group-hover:translate-x-0
                         transition-transform cursor-pointer duration-500'>add to cart
                             <span>
@@ -69,6 +70,18 @@ function ProductsCard({ product }) {
                     }
                 </div>
             </div>
+            <ToastContainer
+                position="top-left"
+                autoClose={400}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="dark">
+            </ToastContainer>
         </div>
     )
 }

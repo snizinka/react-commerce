@@ -22,12 +22,14 @@ const Header = () => {
             <li className="text-base text-black font-bold hover:text-orange-900 hover:underline underline-offset-2 decoration-[1px] cursor-pointer duration-300">Element</li>
             <li className="text-base text-black font-bold hover:text-orange-900 hover:underline underline-offset-2 decoration-[1px] cursor-pointer duration-300">Blog</li>
           </ul>
-          <div className="relative">
-            <img className="w-8" src={bag} alt="cart" />
-            <span className="absolute w-8 top-2 left-0 text-sm flex items-center justify-center font-semibold">
-              {productData.length}
-            </span>
-          </div>
+          <Link to='/cart'>
+            <div className="relative">
+              <img className="w-8" src={bag} alt="cart" />
+              <span className="absolute w-8 top-2 left-0 text-sm flex items-center justify-center font-semibold">
+                {productData.length}
+              </span>
+            </div>
+          </Link>
           <img className="w-8 h-8 rounded-full" src={user} alt="user" />
         </div>
       </div>
