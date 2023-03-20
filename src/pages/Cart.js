@@ -1,12 +1,23 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
-import { ToastContainer } from 'react-toastify'
+import StripeCheckout from 'react-stripe-checkout'
+import { toast, ToastContainer } from 'react-toastify'
 import { cartheader } from '../assets'
 import CartItem from '../components/CartItem'
 
 function Cart() {
   const productData = useSelector((state) => state.oskans.productData);
-  const [totalAmt, setTotalAmt] = useState("")
+  const userInfo = useSelector((state) => state.oskans.userInfo);
+  const [totalAmt, setTotalAmt] = useState("");
+  const [payNow, setPayNow] = useState(false);
+
+  const handleCheckout = () => {
+    if(userInfo) {
+      setPayNow(true)
+    }else {
+      toast.error("Please sign in to OSKANS first!");
+    }
+  }
 
   useEffect(()=>{
     let price = 0;
@@ -37,7 +48,19 @@ function Cart() {
             </div>
             <p className='font-titleFont font-semibold flex justify-between mt-6'>{" "} 
             Total <span className='text-xl font-bold'>${totalAmt}</span></p>
-            <button className='text-base bg-black text-white w-full py-3 mt-6 hover:bg-gray-800 duration-300'>Proceed to checkout</button>
+            <button onClick={handleCheckout} className='text-base bg-black text-white w-full py-3 mt-6 hover:bg-gray-800 duration-300'>Proceed to checkout</button>
+            {
+              payNow && <div>
+                <StripeCheckout 
+                stripeKey='pk_test_51MnWBVI62mR6pvczEIr24BbUXGHdXPq8oYauftTkd2jS1SpoqVJXyagP7DZayurQu9Mm3LRAme1z6mCw1RblEjnj00P2HAKowN'
+                name='OSKANS'
+                amount={totalAmt * 100}
+                label="Pay"
+                description={`For payment ${totalAmt}`}
+               // token={payment}
+                email={userInfo.email}></StripeCheckout>
+              </div>
+            }
           </div>
         </div>
         <ToastContainer
